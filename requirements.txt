@@ -1,1 +1,5 @@
+cffi==1.15.0
 Pillow==9.0.0
+pycparser==2.21
+pyheif @ git+https://github.com/carsales/pyheif.git@7941db4952284e11496e552d75bde7e7779548cd
+tk==0.1.0
