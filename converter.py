@@ -1,20 +1,21 @@
 from PIL import Image
-
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 class converters:
-    def __init__(self,imageinput,convertto,ext,ext1):
-        self.imageinput = imageinput
+    def __init__(self,fileinput,convertto,ext,ext1):
+        self.fileinput = fileinput
         self.convertto = convertto
         self.ext = ext
         self.ext1 = ext1
     
-    def converter(set):
-        capimage = Image.open(set.imageinput)
+    def imgconverter(set):
+        capimage = Image.open(set.fileinput)
         if set.ext == "png" :
             capimage = capimage.convert('RGB')
         capimage.save("{0}.{1}".format(set.ext1,set.convertto))
         print('File conversion done')
 
-
-imageinput,convertto= input("Enetr the URL: "),input("Type what image format to convert to: ")
-ext,ext1= imageinput.split(".")[-1],imageinput.split(".")[0]
-converters(imageinput,convertto,ext,ext1).converter()
+if __name__ == '__main__':
+    fileinput,convertto= askopenfilename(),input("Enter Conversion Format: ")
+    ext,ext1= fileinput.split(".")[-1],fileinput.split(".")[0]
+    converters(fileinput,convertto,ext,ext1).imgconverter()
