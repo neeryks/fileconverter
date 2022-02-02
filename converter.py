@@ -22,6 +22,11 @@ class converters:
         capimage.save("{0}.{1}".format(set.ext1,set.convertto))
         print('File conversion done')
 
+    def pdfto(set):
+        pass
+
+        
+
 if __name__ == '__main__':
     fileinput,convertto= askopenfilename(),input("Enter Conversion Format: ")
     ext,ext1= fileinput.split(".")[-1],fileinput.split(".")[0]
