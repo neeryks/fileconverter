@@ -16,16 +16,12 @@ class converters:
             capimage = Image.open(set.fileinput)
             if set.ext == "png" :
                 capimage = capimage.convert('RGB')
-        else :
+        elif  :
             heif_file = pyheif.read(set.fileinput)
             capimage  = Image.frombytes(heif_file.mode, heif_file.size, heif_file.data,"raw",heif_file.mode,heif_file.stride,)
         capimage.save("{0}.{1}".format(set.ext1,set.convertto))
         print('File conversion done')
-
-    def pdfto(set):
-        pass
-
-        
+     
 
 if __name__ == '__main__':
     fileinput,convertto= askopenfilename(),input("Enter Conversion Format: ")
