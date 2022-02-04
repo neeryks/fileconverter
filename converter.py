@@ -1,3 +1,4 @@
+from tkinter import filedialog
 from PIL import Image
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
@@ -11,16 +12,21 @@ class converters:
         self.ext1 = ext1
     
     def imgconverter(set):
-        imglist = ['jpg','jpeg','png','webp']
-        if any(imglist) == set.ext:
+        print(set.fileinput)
+        print('Starting Conversion... {0} ---> {1}'.format(set.ext.upper(),set.convertto.upper()))
+        imglist = ['jpg','jpeg','png','webp','pdf']
+        if any(imglist) == set.ext :
             capimage = Image.open(set.fileinput)
             if set.ext == "png" :
                 capimage = capimage.convert('RGB')
-        elif  :
+        elif any(['heic','heif']) == set.ext:
             heif_file = pyheif.read(set.fileinput)
             capimage  = Image.frombytes(heif_file.mode, heif_file.size, heif_file.data,"raw",heif_file.mode,heif_file.stride,)
+        else :
+            print("File type not supported.")
+            return
         capimage.save("{0}.{1}".format(set.ext1,set.convertto))
-        print('File conversion done')
+        print('Converted {0} ---> {1}'.format(set.ext.upper(),set.convertto.upper()))
      
 
 if __name__ == '__main__':
