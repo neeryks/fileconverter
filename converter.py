@@ -12,14 +12,14 @@ class converters:
         self.ext1 = ext1
     
     def imgconverter(set):
-        print(set.fileinput)
         print('Starting Conversion... {0} ---> {1}'.format(set.ext.upper(),set.convertto.upper()))
         imglist = ['jpg','jpeg','png','webp','pdf']
-        if any(imglist) == set.ext :
+        heiccodec = ['heic','heif']
+        if any(set.ext in extension for extension in imglist) == True :
             capimage = Image.open(set.fileinput)
             if set.ext == "png" :
                 capimage = capimage.convert('RGB')
-        elif any(['heic','heif']) == set.ext:
+        elif any(set.ext in extension for extension in heiccodec) == True:
             heif_file = pyheif.read(set.fileinput)
             capimage  = Image.frombytes(heif_file.mode, heif_file.size, heif_file.data,"raw",heif_file.mode,heif_file.stride,)
         else :
@@ -31,5 +31,5 @@ class converters:
 
 if __name__ == '__main__':
     fileinput,convertto= askopenfilename(),input("Enter Conversion Format: ")
-    ext,ext1= fileinput.split(".")[-1],fileinput.split(".")[0]
+    ext,ext1= fileinput.split(".")[-1].lower(),fileinput.split(".")[0]
     converters(fileinput,convertto,ext,ext1).imgconverter()
