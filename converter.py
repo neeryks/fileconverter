@@ -4,7 +4,6 @@ from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 import pyheif
 import pdf2image as p2i
-import zipfile
 class converters:
     def __init__(self,fileinput,convertto,ext,ext1):
         self.fileinput = fileinput
@@ -34,7 +33,6 @@ class converters:
         capimage = p2i.convert_from_path(set.fileinput,fmt="jpeg",output_folder='media')
         capimage
         print('Converted PDF ---> JPEG')
-        return
         
 
 if __name__ == '__main__':
@@ -42,7 +40,7 @@ if __name__ == '__main__':
     fileinput = askopenfilename()   
     ext,ext1= fileinput.split(".")[-1].lower(),fileinput.split(".")[0]
     if ext == "pdf":
-        convertto = "jpg"
+        convertto = "jpeg"
         con = converters(fileinput,convertto,ext,ext1)
         con.pdfconverter()
     elif any(ext in listvar for listvar in ['jpg','jpeg','webp','heic','heif']) == True:
