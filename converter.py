@@ -24,20 +24,28 @@ class converters:
         elif set.ext == "png":
             capimage = Image.open(set.fileinput)
             capimage = capimage.convert('RGB')
-        elif set.ext == "pdf":
-            capimage = p2i.convert_from_path(set.fileinput,fmt="jpeg",output_folder='media')
-            capimage
-            print('Converted PDF ---> ZIP')
-            return
-            
         else :
             print("File type not supported.")
             return
         capimage.save("{0}.{1}".format(set.ext1,set.convertto))
         print('Converted {0} ---> {1}'.format(set.ext.upper(),set.convertto.upper()))
+
+    def pdfconverter(set):
+        capimage = p2i.convert_from_path(set.fileinput,fmt="jpeg",output_folder='media')
+        capimage
+        print('Converted PDF ---> JPEG')
+        return
         
 
 if __name__ == '__main__':
-    fileinput,convertto= askopenfilename(),input("Enter Conversion Format: ")
+    input("Press Any key to select the file for conversion")
+    fileinput = askopenfilename()   
     ext,ext1= fileinput.split(".")[-1].lower(),fileinput.split(".")[0]
-    converters(fileinput,convertto,ext,ext1).imgconverter()
+    if ext == "pdf":
+        convertto = "jpg"
+        con = converters(fileinput,convertto,ext,ext1)
+        con.pdfconverter()
+    elif any(ext in listvar for listvar in ['jpg','jpeg','webp','heic','heif']) == True:
+        convertto = input("Enter Conversion Format: ").lower()
+        con = converters(fileinput,convertto,ext,ext1)
+        con.imgconverter()
