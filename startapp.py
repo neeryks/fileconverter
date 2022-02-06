@@ -9,7 +9,7 @@ def chooser():
     if ext == "pdf":
         convertto = "jpeg"
         co(fileinput,convertto,ext,ext1).pdfconverter()
-    elif any(ext in listvar for listvar in ['jpg','jpeg','webp','heic','heif']) == True:
+    elif any(ext in listvar for listvar in ['jpg','jpeg','webp','heic','heif','png']) == True:
         convertto = input("Enter Conversion Format: ").lower()
         co(fileinput,convertto,ext,ext1).imgconverter()
 chooser()
