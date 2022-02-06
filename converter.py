@@ -43,7 +43,7 @@ if __name__ == '__main__':
         convertto = "jpeg"
         con = converters(fileinput,convertto,ext,ext1)
         con.pdfconverter()
-    elif any(ext in listvar for listvar in ['jpg','jpeg','webp','heic','heif']) == True:
+    elif any(ext in listvar for listvar in ['jpg','jpeg','webp','heic','heif','png']) == True:
         convertto = input("Enter Conversion Format: ").lower()
         con = converters(fileinput,convertto,ext,ext1)
         con.imgconverter()
